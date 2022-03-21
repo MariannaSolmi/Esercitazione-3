@@ -1,0 +1,141 @@
+VARIABILI
+NOTA BENE: si considera di avere i file prodotti nella esercitazione precedente!
+1) Memorizzare in una variabile di nome x, il numero di linee del file p.txt.
+x= 'wc -l < p.txt.'
+2) Memorizzare in una variabile di nome y, il numero di linee del file prova.
+x= 'wc -l < nomeprova'
+3) Memorizzare in una variabile di nome z, la somma della variabile x e della variabile y e visualizzarne il valore.
+z='expr $x + $y'
+4) Con l’editor vi, scrivere un file comandi prova-var.sh che visualizzi il valore delle variabili x, y e z inserendo
+anche dei commenti significativi. Rendere eseguibile tale file comandi (verificare che sia eseguibile con ls –l
+prova-var.sh) e mandarlo in esecuzione. Quale è il risultato?
+vi prova-var.sh
+chmod +x prova-var.sh
+ls -l ./prova-var.sh
+./prova-var.sh
+
+5) Rendere le variabili x, y e z variabili di ambiente e riprovare ad eseguire prova-var.sh. Quale è il risultato?
+export x; export y; export z
+6) Verificare con il comando env, la presenza di x, y e z nell’ambiente.
+env
+7) Copiare il file comandi prova-var.sh nel file comandi di nome prova-var-bis.sh, quindi aggiungere in fondo un
+comando che modifica il valore della variabile z e lo visualizza nuovamente, sempre inserendo commenti
+significativi. Provare ad eseguire prova-var-bis.sh. Quale è il risultato? Quale valore ha la variabile z nella shell
+interattiva di partenza?
+cp prova-var.sh ./prova-var-bin.sh
+vi prova-var-bin.sh
+chmod +x ./prova-var-bin.sh
+./prova-var-bin.sh
+
+METACARATTERI
+8) Utilizzando esclusivamente la ridirezione a vuoto, creare diversi file con nomi che iniziano e terminano con
+varie lettere dell’alfabeto maiuscole e minuscole e con numeri; creare anche un paio di directory. Verificare quindi il comportamento dei comandi:
+> albero; > divano; > farfalla
+a) echo [a-z]*
+b) echo [A-Z]*
+c) echo [0-9]*
+d) echo *[a-z]
+e) echo *[A-Z]
+f) echo *[0-9]
+9) Rifare TUTTI i comandi precedenti usando la negazione: ad esempio per a) echo [!a-z]*
+10) Utilizzare nuovamente i pattern precedenti utilizzando però il comando ls –l: che cosa cambia?
+
+INIBIZIONI
+11) Con un editor, scrivere un file comandi prova-inibizioni.sh che assegna ad una variabile di shell di nome a la
+stringa ciao; quindi visualizzare con il comando echo il valore della variabile a, della directory corrente e della
+espansione del metacarattere *. Inserire dei commenti significativi. Rendere eseguibile il file comandi e
+mandarlo in esecuzione. Quale è il risultato?
+vi prova-inibizioni.sh
+a=ciao
+echo $a
+echo 'pwd' 
+echo "*"
+chmod
+./prova-inibizioni.sh
+12) Modificare, con un editor, il file comandi prova-inibizioni.sh e ricopiare la linea con il comando echo andando
+a inibire TUTTE le sostituzioni. Mandarlo nuovamente in esecuzione. Quale è il risultato?
+uso gli apici singoli '
+13) Modificare, con un editor, il file comandi prova-inibizioni.sh e ricopiare la linea con il comando echo andando
+a inibire SOLO l’ultima sostituzione. Mandarlo nuovamente in esecuzione. Quale è il risultato?
+echo "..."
+
+SEMPLICI FILE COMANDI
+14) Partendo dal file DIR.sh visto a lezione, con un editor, scrivere un file comandi DIRCTL.sh che, prima di eseguire
+il codice visto in DIR.sh, deve controllare che il file comandi sia eseguito esattamente con un solo parametro.
+Verificarne il funzionamento per i vari casi.
+
+15) Copiare il file comandi DIRCTL.sh dell’esercizio precedente nel file comandi di nome DIRCTL1.sh; aggiungere il
+controllo se il parametro è un file o una directory adattando il codice ai due diversi casi. Verificarne il
+funzionamento per i vari casi.
+ 
+16) Copiare il file comandi DIRCTL1.sh dell’esercizio precedente nel file comandi di nome DIRCTL2.sh; aggiungere
+che nel caso non si passino parametri, si devono visualizzare tutte le informazioni dei file e delle sotto directory
+della directory corrente, in forma paginata. Verificarne il funzionamento per i vari casi.
+case con 
+ls -l | more $1
+17) Con un editor, scrivere un file comandi di nome un-solo-parametro.sh che accetti un solo parametro e che
+riporti sullo standard output se tale parametro rappresenta un nome assoluto, relativo, o relativo semplice.
+Verificarne il funzionamento per i tre casi.
+case con 
+/*)
+*/*)
+*)
+18) Copiare il file comandi un-solo-parametro.sh dell’esercizio precedente nel file comandi di nome un-soloparametro-bis.sh; aggiungere SOLO nel caso il nome sia assoluto, il controllo sul ‘tipo’ di parametro e cioè se
+è un file o una directory traversabile o nessuno dei due casi. Verificarne sempre il funzionamento.
+
+19) Con un editor, scrivere un file comandi di nome trova-file.sh che controlli di essere invocato esattamente con
+1 parametro e che tale parametro rappresenti un nome relativo semplice. Lo script deve verificare se nella
+directory corrente esiste un file il cui nome è passato come parametro e ne deve stampare il nome assoluto.
+
+20) Con un editor, scrivere un file comandi di nome append.sh che deve accettare uno o due parametri, che
+devono essere nomi di file (in qualunque forma, assoluti/relativi/relativi semplici). Nel caso di un solo
+parametro, il contenuto dello standard input deve essere scritto in append sul file il cui nome è passato come
+unico parametro; nel caso di due parametri, il contenuto del file il cui nome è passato come primo parametro
+deve essere scritto in append sul file il cui nome è passato come secondo parametro. Verificarne il
+funzionamento per i due casi.
+
+
+21) Con un editor, scrivere un file comandi di nome append1.sh che si deve comportare in modo simile al file
+comandi append.sh, ma deve prevedere esattamente due parametri; devono essere poi introdotti diversi
+controlli: a) i due parametri devono essere nomi relativi semplici; b) il file il cui nome è passato come primo
+parametro deve esistere ed essere leggibile; c) il file il cui nome è passato come secondo parametro se esiste
+deve essere scrivibile, altrimenti se non esiste si deve verificare che la directory corrente sia scrivibile.
+Verificarne il funzionamento nei vari casi.
+FATTOOOOOOOOOOOOOO
+
+22) Con un editor, scrivere un file comandi di nome tutti-par.sh che, dopo aver controllato che il numero di
+parametri sia maggiore o uguale a 1, riporti su standard output tutti i parametri passati. Verificarne il
+funzionamento.
+arrivata qui, da fare!
+
+23) Copiare il file comandi tutti-par.sh dell’esercizio precedente nel file comandi di nome tutti-par-bis.sh;
+aggiungere all’interno del ciclo in cui si riporta su standard output tutti i parametri passati con l’indicazione
+del loro ‘nome’ ($1, $2, etc.). Verificarne il funzionamento.
+24) Partendo dal file LeggiEMostra.sh visto a lezione, con un editor, scrivere un file comandi di nome
+LeggiEMostra1.sh in modo da poter funzionare per un numero di parametri maggiore o uguale a 1 e usando
+un case per verificare la risposta dell’utente. Verificarne il funzionamento.
+25) Partendo dal file for1.sh visto a lezione, con un editor, scrivere un file comandi di nome for1Bis.sh che visualizzi
+solo il nome dei file/directory nascosti. Verificarne il funzionamento.
+26) Partendo dal file for1.sh visto a lezione, con un editor, scrivere un file comandi di nome for2.sh che deve
+visualizzare i nomi della directory corrente che iniziano con la lettera ‘p’ e, nel caso il nome corrisponda ad un
+file, si deve anche visualizzarne il contenuto. Verificarne il funzionamento.
+27) Partendo dal file for4Bis.sh visto a lezione, con un editor, scrivere un file comandi di nome for4Ter.sh che deve
+prevedere un singolo parametro che sia il nome relativo semplice di un file. Sul contenuto del file passato
+come parametro si deve svolgere il for presente in for4Bis.sh. Si creino 3 file di testo con nome pippo.txt (con
+4 linee), pluto.txt (con 3 linee) e paperino.txt (con 6 linee), quindi si verifichi il funzionamento di for4Ter.sh
+creando 2 file di nome temp e temp1 che devono avere, rispettivamente il formato dei file t e t1 usati negli
+esempi a lezione. Si crei anche un file temp2 che deve riportare tutte le informazioni di temp1 su una sola
+linea e si verifichi il funzionamento di for4Ter.sh anche in questo caso.
+28) Con un editor, scrivere un file comandi di nome primo-par.sh che riporti su standard output il primo parametro
+della linea di comando e che riporti anche la lista dei parametri escluso il primo. Verificarne il funzionamento.
+29) Con un editor, scrivere un file comandi di nome ultimo-par.sh che riporti su standard output l'ultimo
+parametro della linea di comando e che riporti anche la lista dei parametri escluso l’ultimo. Verificarne il
+funzionamento.
+30) Con un editor, scrivere due file comandi; il primo file comandi si deve chiamare FCP.sh e deve fare i seguenti
+controlli: di essere invocato esattamente con 1 parametro e che tale parametro rappresenti un nome assoluto
+di una directory esistente e traversabile; dopo i controlli, FCP.sh deve invocare il secondo file comandi
+passandogli la directory assoluta. Il secondo file comandi si deve chiamare file-dir.sh e, dopo essersi spostato
+nella directory il cui è passato come parametro, deve scorrere l'intero contenuto della directory e deve
+riportare una [F] prima del nome di ogni file regolare ed una [D] prima del nome di ogni directory e, da ultimo,
+deve anche riportare su standard output il numero totale di nomi di file e directory stampati. Verificarne il
+funzionamento. NOTA BENE: il file file-dir.sh NON deve essere ricorsivo.
