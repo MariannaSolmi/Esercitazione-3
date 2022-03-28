@@ -106,11 +106,16 @@ FATTOOOOOOOOOOOOOO
 22) Con un editor, scrivere un file comandi di nome tutti-par.sh che, dopo aver controllato che il numero di
 parametri sia maggiore o uguale a 1, riporti su standard output tutti i parametri passati. Verificarne il
 funzionamento.
-arrivata qui, da fare!
+
+for i in $*
+do echo $i
+done
 
 23) Copiare il file comandi tutti-par.sh dell’esercizio precedente nel file comandi di nome tutti-par-bis.sh;
 aggiungere all’interno del ciclo in cui si riporta su standard output tutti i parametri passati con l’indicazione
 del loro ‘nome’ ($1, $2, etc.). Verificarne il funzionamento.
+
+
 24) Partendo dal file LeggiEMostra.sh visto a lezione, con un editor, scrivere un file comandi di nome
 LeggiEMostra1.sh in modo da poter funzionare per un numero di parametri maggiore o uguale a 1 e usando
 un case per verificare la risposta dell’utente. Verificarne il funzionamento.
